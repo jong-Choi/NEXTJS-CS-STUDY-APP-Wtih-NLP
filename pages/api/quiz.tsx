@@ -3,7 +3,7 @@ import fs from "fs/promises";
 import path from "path";
 import axios from "axios";
 
-interface Quiz {
+export interface Quiz {
   id: number;
   originalText: string;
   keywordArray: Array<string>;
@@ -20,7 +20,7 @@ interface Morp {
 const quizApiHandler: NextApiHandler = async (req, res) => {
   const filePath = path.join(process.cwd(), "data", "quizes.json");
   const jsonData = await fs.readFile(filePath, "utf-8");
-  const data: Quiz[] = JSON.parse(jsonData);
+  const quizes: Quiz[] = JSON.parse(jsonData);
 
   const keywordsFilePath = path.join(process.cwd(), "data", "keywords.json");
   const keywordsData = await fs.readFile(keywordsFilePath, "utf-8");
@@ -36,7 +36,7 @@ const quizApiHandler: NextApiHandler = async (req, res) => {
     const keywordArray = await getKeywordArray(originalText);
 
     const quiz = {
-      id: data.at(-1)?.id + 1 || 0,
+      id: quizes.at(-1)?.id + 1 || 0,
       category,
       title,
       originalText,
@@ -46,12 +46,20 @@ const quizApiHandler: NextApiHandler = async (req, res) => {
     const newKeywordsSet = new Set([...keywords, ...keywordArray]);
     const newKeywordsData = Array.from(newKeywordsSet);
 
-    data.push(quiz);
+    quizes.push(quiz);
 
-    await fs.writeFile(filePath, JSON.stringify(data));
+    await fs.writeFile(filePath, JSON.stringify(quizes));
     await fs.writeFile(keywordsFilePath, JSON.stringify(newKeywordsData));
 
-    res.status(200).json({ message: "글이 작성되었습니다.", result: quiz });
+    res.status(200).json({ message: "퀴즈가 작성되었습니다.", result: quiz });
+  } else if (req.method === "GET") {
+    res.status(200).json({
+      message: "퀴즈를 불러왔습니다.",
+      result: {
+        quizes: quizes,
+        keywords: keywords,
+      },
+    });
   } else {
     res.status(405).json({ message: "메서드가 잘못 되었습니다." });
   }
