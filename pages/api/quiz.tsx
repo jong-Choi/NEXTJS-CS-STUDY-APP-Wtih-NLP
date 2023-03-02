@@ -5,6 +5,8 @@ import axios from "axios";
 
 export interface Quiz {
   id: number;
+  category: string;
+  title: string;
   originalText: string;
   keywordArray: Array<string>;
 }
