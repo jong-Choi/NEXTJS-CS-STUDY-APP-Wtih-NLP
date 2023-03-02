@@ -21,7 +21,8 @@ const quizApiHandler: NextApiHandler = async (req, res) => {
   //메서드가 post일 때에,
   if (req.method === "POST") {
     //body에 있는 content 프로퍼티를 읽는다.
-    const { title, originalText } = req.body as {
+    const { category, title, originalText } = req.body as {
+      category: string;
       title: string;
       originalText: string;
     };
@@ -100,6 +101,7 @@ const quizApiHandler: NextApiHandler = async (req, res) => {
     const data: Quiz[] = JSON.parse(jsonData);
     const quiz = {
       id: data.at(-1)?.id + 1 || 0,
+      category,
       title,
       originalText,
       keywordArray,
