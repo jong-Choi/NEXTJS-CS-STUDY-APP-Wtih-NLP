@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import styled from "styled-components";
 import { Quiz } from "../pages/api/quiz";
 
 const QuizContainer = ({
@@ -109,13 +110,21 @@ const QuizContainer = ({
   return (
     <div>
       <div style={{ whiteSpace: "pre" }}>
-        {[
-          slicedTextArray[0],
-          ...isCorrect.map((boolean, idx) => {
-            if (boolean) return slicedTextArray[idx + 1];
-            else return replacedTextArray[idx];
-          }),
-        ].join("")}
+        <span>{slicedTextArray[0]}</span>
+        {isCorrect.map((boolean, idx) => {
+          if (boolean) return <span>{slicedTextArray[idx + 1]}</span>;
+          else {
+            const [left, rest] = replacedTextArray[idx].split("{");
+            const [center, right] = rest.split("}");
+            return (
+              <>
+                <span>{left}</span>
+                <StyledQuiz>{center}</StyledQuiz>
+                <span>{right}</span>
+              </>
+            );
+          }
+        })}
       </div>
       <div>
         {allAnswersKeyword.map((keyword) => {
@@ -131,3 +140,8 @@ const QuizContainer = ({
 };
 
 export default QuizContainer;
+
+export const StyledQuiz = styled.span`
+  color: red;
+  background-color: yellow;
+`;
