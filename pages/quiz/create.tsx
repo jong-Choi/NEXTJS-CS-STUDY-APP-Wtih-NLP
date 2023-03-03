@@ -4,6 +4,7 @@ import React, { useState } from "react";
 const QuizCreate = () => {
   const [originalText, setOriginalText] = useState("");
   const [title, setTitle] = useState("");
+  const [source, setSource] = useState("");
   const [category, setCategory] = useState("리액트");
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -12,6 +13,7 @@ const QuizCreate = () => {
         category,
         title,
         originalText,
+        source,
       });
       if (res.status === 200) {
         alert(res.data.message);
@@ -32,11 +34,20 @@ const QuizCreate = () => {
           <option value="네트워크">네트워크</option>
           <option value="운영체제">운영체제</option>
         </select>
-        <input value={title} onChange={(e) => setTitle(e.target.value)} />
+        <input
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          placeholder="문제 제목"
+        />
         <textarea
           value={originalText}
           onChange={(e) => setOriginalText(e.target.value)}
-          placeholder="무슨 일이 일어나고 있나요?"
+          placeholder="문제로 만들 내용을 입력하세요"
+        />
+        <input
+          value={source}
+          onChange={(e) => setSource(e.target.value)}
+          placeholder="출처"
         />
         <button type="submit" onClick={onSubmit}>
           전송하기

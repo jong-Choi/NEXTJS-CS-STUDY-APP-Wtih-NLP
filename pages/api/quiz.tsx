@@ -7,6 +7,7 @@ export interface Quiz {
   id: number;
   category: string;
   title: string;
+  source: string;
   originalText: string;
   keywordArray: Array<string>;
 }
@@ -29,10 +30,11 @@ const quizApiHandler: NextApiHandler = async (req, res) => {
   const keywords: string[] = JSON.parse(keywordsData);
 
   if (req.method === "POST") {
-    const { category, title, originalText } = req.body as {
+    const { category, title, originalText, source } = req.body as {
       category: string;
       title: string;
       originalText: string;
+      source: string;
     };
 
     const keywordArray = await getKeywordArray(originalText);
@@ -41,6 +43,7 @@ const quizApiHandler: NextApiHandler = async (req, res) => {
       id: quizes.at(-1)?.id + 1 || 0,
       category,
       title,
+      source,
       originalText,
       keywordArray,
     };
