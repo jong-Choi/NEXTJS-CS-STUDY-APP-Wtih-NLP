@@ -224,7 +224,7 @@ export const StyledQuiz = styled.span`
 
 export const StyledTextHeader = styled.div`
   position: sticky;
-  top: env(safe-area-inset-top);
+  /* top: env(safe-area-inset-top); */
   /* min-height: calc(100% + env(safe-area-inset-top)); */
   padding: 0 1rem;
   padding-top: calc(0.5rem + env(safe-area-inset-top));
@@ -232,7 +232,7 @@ export const StyledTextHeader = styled.div`
     0deg,
     rgba(255, 255, 255, 0.2) 0%,
     rgba(255, 255, 255, 1) 10%,
-    #d5d2fa 100%
+    #daf1ff 100%
   );
   .sub-header {
     display: flex;
