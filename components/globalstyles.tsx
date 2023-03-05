@@ -28,6 +28,9 @@ const GlobalStyle = createGlobalStyle`
     -webkit-user-select: none;
     user-select: none;
   }
+  body {
+    padding-top:30px;
+  }
 
   a {
     color: inherit;

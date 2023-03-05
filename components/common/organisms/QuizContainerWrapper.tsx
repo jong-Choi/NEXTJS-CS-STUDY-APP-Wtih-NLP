@@ -12,7 +12,6 @@ export const QuizContainerWrapper = ({ children }) => {
 export const StyledQuizContainer = styled.div`
   height: 100%;
   width: 100%;
-
   @media screen and (min-width: 769px) {
     position: absolute;
     height: 50%;
