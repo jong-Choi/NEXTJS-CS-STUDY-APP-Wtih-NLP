@@ -29,7 +29,8 @@ const GlobalStyle = createGlobalStyle`
     user-select: none;
   }
   body {
-    padding-top:30px;
+    padding-top:40px;
+    overflow-y:hidden;
   }
 
   a {
