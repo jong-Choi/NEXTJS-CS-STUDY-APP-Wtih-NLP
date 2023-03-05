@@ -11,11 +11,13 @@ const QuizContainer = ({
   keywords,
   onCorrect,
   nav,
+  timer,
 }: {
   quiz: Quiz;
   keywords: string[];
   onCorrect: (attempts: number) => void;
   nav: JSX.Element;
+  timer: number;
 }) => {
   const [slicedTextArray, setSlicedTextArray] = useState([] as string[]);
   const [replacedTextArray, setReplacedTextArray] = useState([] as string[]);
@@ -152,7 +154,10 @@ const QuizContainer = ({
     <StyledQuizContainer>
       <StyledTextHeader>
         {nav}
-        <div>시도: {attempts}</div>
+        <div className="sub-header">
+          <div>시도: {attempts}</div>
+          <div>지난 시간: {timer}초</div>
+        </div>
       </StyledTextHeader>
 
       <TextWrapper>
@@ -212,4 +217,8 @@ export const StyledTextHeader = styled.div`
     rgba(255, 255, 255, 1) 10%,
     rgba(255, 255, 255, 1) 100%
   );
+  .sub-header {
+    display: flex;
+    justify-content: space-between;
+  }
 `;

@@ -37,7 +37,7 @@ export const StyledQuizAnswers = styled.div`
   position: fixed;
   bottom: 0;
   width: 100%;
-  max-height: 30%;
+  max-height: 35%;
   text-align: center;
   -webkit-box-shadow: 0 -8px 10px -6px rgba(255, 148, 46, 0.3);
   -moz-box-shadow: 0 -8px 10px -6px rgba(255, 148, 46, 0.3);

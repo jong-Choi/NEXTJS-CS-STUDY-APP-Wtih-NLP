@@ -67,7 +67,7 @@ const MyQuiz = () => {
         </StyledNav>
         {quizes.map((element) => {
           return (
-            <>
+            <div key={element.id}>
               <div>
                 <b>카테고리:</b> {element.category}
               </div>
@@ -89,7 +89,7 @@ const MyQuiz = () => {
                 <a href={element.source}>{element.source}</a>
               </div>
               <hr />
-            </>
+            </div>
           );
         })}
       </TextWrapper>
