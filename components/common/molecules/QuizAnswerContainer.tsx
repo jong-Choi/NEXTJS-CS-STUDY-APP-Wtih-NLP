@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { Button } from "../atoms/Button";
 
-const QuizAnswerContainer = ({ ...props }) => {
+const QuizAnswerContainer = ({ FAB = <></>, ...props }) => {
   const [activated, setActivated] = useState(true);
   return (
     <StyledQuizAnswers>
+      {FAB}
       <div className="actionButton">
         <Button
           onClick={() => {

@@ -53,18 +53,21 @@ const MyQuiz = () => {
       setQuizes(filteredArray[index]);
     }
   };
+
+  const FAB = (
+    <StyledNav>
+      <Button
+        label={`< 새로운 문제 풀기`}
+        size="small"
+        onClick={() => router.push("/quiz")}
+        color="teal"
+        backgroundColor="rgba(242, 248, 249, 1)"
+      />
+    </StyledNav>
+  );
   return (
     <StyledQuizContainer>
       <TextWrapper>
-        <StyledNav>
-          <Button
-            label={`< 새로운 문제 풀기`}
-            size="small"
-            onClick={() => router.push("/quiz")}
-            color="teal"
-            backgroundColor="rgba(242, 248, 249, 0.8)"
-          />
-        </StyledNav>
         {quizes.map((element) => {
           return (
             <div key={element.id}>
@@ -125,7 +128,7 @@ const MyQuiz = () => {
           );
         })}
       </TextWrapper>
-      <QuizAnswerContainer>
+      <QuizAnswerContainer FAB={FAB}>
         <Button
           key="전체"
           value="전체"
@@ -152,8 +155,10 @@ const MyQuiz = () => {
 export default MyQuiz;
 
 export const StyledNav = styled.div`
-  position: fixed;
+  /* position: fixed;
   top: 0px;
-  right: 0px;
+  right: 0px; */
+  position: absolute;
+  top: -50px;
   padding: 5px 10px;
 `;
