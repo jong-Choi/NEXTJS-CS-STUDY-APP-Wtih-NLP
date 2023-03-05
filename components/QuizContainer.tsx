@@ -225,7 +225,7 @@ export const StyledQuiz = styled.span`
 export const StyledTextHeader = styled.div`
   position: sticky;
   top: 0;
-  padding: 0 1rem;
+  padding: 0.5rem 1rem 0;
   background: linear-gradient(
     0deg,
     rgba(255, 255, 255, 0.2) 0%,
