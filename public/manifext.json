@@ -1,0 +1,17 @@
+{
+  "name": "CS 문제풀이",
+  "short_name": "CS Go",
+  "icons": [
+    {
+      "src": "/favicon.jpg",
+      "sizes": "256x256",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "theme_color": "#FFFFFF",
+  "background_color": "#FFFFFF",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait"
+}
