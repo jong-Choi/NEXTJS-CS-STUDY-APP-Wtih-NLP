@@ -36,9 +36,9 @@ const InstallButton = () => {
     }
   };
 
-  if (!isStandalone || !deferredPrompt) {
-    return null;
-  }
+  // if (!isStandalone || !deferredPrompt) {
+  //   return null;
+  // }
 
   return (
     <div style={{ margin: "1rem 0 0" }}>
