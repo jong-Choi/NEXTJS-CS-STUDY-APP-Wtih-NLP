@@ -14,7 +14,7 @@ export default TextWrapper;
 
 const StyledTextWrapper = styled.div`
   font-family: "Noto Sans KR";
-  height: 100%;
+  height: 90%;
   width: 100%;
   overflow-y: scroll;
   white-space: pre-wrap;

@@ -43,7 +43,7 @@ export const Button = ({
         disabled={disabled}
         {...props}
       >
-        {label}
+        {label.length > 17 ? label.slice(0, 15) + "..." : label}
       </button>
     </StyledButton>
   );

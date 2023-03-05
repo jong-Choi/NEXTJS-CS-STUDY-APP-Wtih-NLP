@@ -26,14 +26,17 @@ export default function Home() {
   };
   const router = useRouter();
   const [ready, setReady] = useState(false);
+  const [myQuiz, setMyQuiz] = useState(null);
   useEffect(() => {
     fetchData().then((res) => {
       const { quizes, keywords } = res;
       localStorage.setItem("quizes", JSON.stringify(quizes));
       localStorage.setItem("keywords", JSON.stringify(keywords));
+      setMyQuiz(JSON.parse(localStorage.getItem("myQuiz")));
       setReady(true);
     });
   }, []);
+
   return (
     <Container>
       <Head>
@@ -46,9 +49,24 @@ export default function Home() {
         <Title>CS문제 풀기</Title>
 
         {ready ? (
-          <Description>
-            <Button label="시작하기" onClick={() => router.push("/quiz")} />
-          </Description>
+          <>
+            <Description>
+              <Button label="시작하기" onClick={() => router.push("/quiz")} />
+            </Description>
+            {myQuiz ? (
+              <Button
+                label="내가 푼 문제 초기화"
+                size="small"
+                color="secondary"
+                onClick={() => {
+                  localStorage.removeItem("myQuiz");
+                  setMyQuiz(JSON.parse(localStorage.getItem("myQuiz")));
+                }}
+              />
+            ) : (
+              <></>
+            )}
+          </>
         ) : (
           <Description>잠시만 기다려 주세요</Description>
         )}

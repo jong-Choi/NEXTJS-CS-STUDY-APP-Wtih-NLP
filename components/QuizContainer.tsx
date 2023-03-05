@@ -91,12 +91,14 @@ const QuizContainer = ({
     setSlicedTextArray(slicedTextArray);
     setReplacedTextArray(replacedTextArray);
     setAnswersKeyword(answersKeyword);
-    const allAnswersKeyword = [...answersKeyword];
-    while (allAnswersKeyword.length < 10) {
+    let allAnswersKeyword = [...answersKeyword];
+    const keyset = new Set(allAnswersKeyword);
+    while (keyset.size < 10) {
       const idx = Math.floor(Math.random() * keywords.length);
       const keyword = keywords[idx];
-      if (!allAnswersKeyword.includes(keyword)) allAnswersKeyword.push(keyword);
+      keyset.add(keyword);
     }
+    allAnswersKeyword = Array.from(keyset);
     const sortedAllKeywords = allAnswersKeyword.sort(() => Math.random() - 0.5);
     const sortedAllKeywordStyle = sortedAllKeywords.map(
       (element, index) =>
