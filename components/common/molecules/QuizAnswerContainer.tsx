@@ -44,7 +44,6 @@ export const StyledQuizAnswers = styled.div`
   box-shadow: 0 -8px 10px -6px rgba(255, 148, 46, 0.3);
   background: white;
   .buttons {
-    overflow-y: scroll;
     justify-content: space-around;
     transition: all 200ms;
   }
