@@ -224,6 +224,7 @@ export const StyledQuiz = styled.span`
 
 export const StyledTextHeader = styled.div`
   position: sticky;
+  top: 0;
   /* top: env(safe-area-inset-top); */
   /* min-height: calc(100% + env(safe-area-inset-top)); */
   padding: 0 1rem;
