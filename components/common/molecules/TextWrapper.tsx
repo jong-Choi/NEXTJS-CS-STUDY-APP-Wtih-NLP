@@ -16,7 +16,6 @@ const StyledTextWrapper = styled.div`
   font-family: "Noto Sans KR";
   height: 90%;
   width: 100%;
-  overflow-y: scroll;
   white-space: pre-wrap;
   line-height: 1.5rem;
   padding: 1rem;
@@ -24,5 +23,13 @@ const StyledTextWrapper = styled.div`
   .bottom-padding {
     width: 100%;
     height: 40vh;
+  }
+
+  overflow-y: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+
+  ::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
   }
 `;
