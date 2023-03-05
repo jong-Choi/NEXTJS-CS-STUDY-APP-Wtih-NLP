@@ -25,7 +25,6 @@ const StyledTextWrapper = styled.div`
     height: 40vh;
   }
 
-  overflow-y: scroll;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 
