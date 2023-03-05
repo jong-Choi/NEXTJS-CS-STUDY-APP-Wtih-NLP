@@ -227,8 +227,8 @@ export const StyledTextHeader = styled.div`
   top: 0;
   /* top: env(safe-area-inset-top); */
   /* min-height: calc(100% + env(safe-area-inset-top)); */
-  padding: 0 1rem;
-  padding-top: calc(0.5rem + env(safe-area-inset-top));
+  padding: 0.5rem 1rem;
+  padding-top: calc(0.3rem + env(safe-area-inset-top));
   background: linear-gradient(
     0deg,
     rgba(255, 255, 255, 0.2) 0%,
