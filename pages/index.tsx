@@ -1,6 +1,7 @@
 import axios from "axios";
 import Head from "next/head";
 import { useRouter } from "next/navigation";
+import Router from "next/router";
 import { useEffect, useState } from "react";
 import { Button } from "../components/common/atoms/Button";
 import {
@@ -24,6 +25,7 @@ export default function Home() {
       alert(e.message);
     }
   };
+
   const router = useRouter();
   const [ready, setReady] = useState(false);
   const [myQuiz, setMyQuiz] = useState(null);
@@ -75,7 +77,7 @@ export default function Home() {
         {ready ? (
           <>
             <Description>
-              <Button label="시작하기" onClick={() => router.push("/quiz")} />
+              <Button label="시작하기" onClick={() => Router.push("/quiz")} />
             </Description>
             {myQuiz ? (
               <Button
