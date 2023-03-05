@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Quiz } from "../pages/api/quiz";
-import { Button, ButtonProps } from "./common/atom/Button";
+import { Button, ButtonProps } from "./common/atoms/Button";
+import TextWrapper from "./common/molecules/TextWrapper";
+import QuizAnswerContainer from "./common/molecules/QuizAnswerContainer";
+import { StyledQuizContainer } from "./common/organisms/QuizContainerWrapper";
 
 const QuizContainer = ({
   quiz,
@@ -140,8 +143,8 @@ const QuizContainer = ({
   };
 
   return (
-    <div>
-      <div style={{ whiteSpace: "pre" }}>
+    <StyledQuizContainer>
+      <TextWrapper>
         <span>{slicedTextArray[0]}</span>
         {isCorrect.map((boolean, idx) => {
           if (boolean)
@@ -158,8 +161,8 @@ const QuizContainer = ({
             );
           }
         })}
-      </div>
-      <div>
+      </TextWrapper>
+      <QuizAnswerContainer>
         {keywordStyleArray.map((props, idx) => {
           return (
             <Button
@@ -167,11 +170,12 @@ const QuizContainer = ({
               {...props}
               value={props.label}
               onClick={onClickKeyword}
+              style={{ margin: "5px" }}
             />
           );
         })}
-      </div>
-    </div>
+      </QuizAnswerContainer>
+    </StyledQuizContainer>
   );
 };
 
@@ -183,7 +187,7 @@ export const StyledQuiz = styled.span`
   color: rgba(64, 103, 249, 1);
   background-color: rgba(64, 103, 249, 0.05);
   border-radius: 3em;
-  padding: 0px 16px;
+  padding: 0px 6px;
   /* color: red;
   background-color: yellow; */
 `;

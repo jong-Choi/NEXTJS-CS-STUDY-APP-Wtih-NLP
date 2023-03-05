@@ -16,6 +16,7 @@ export interface ButtonProps {
   disabled?: boolean;
   label: string;
   value?: any;
+  style?: {};
   onClick?: (e) => void;
 }
 
