@@ -23,7 +23,7 @@ const HomeScreenMessage = () => {
 
   if ((isAndroid || isiOS) && !window.navigator.standalone) {
     return (
-      <div>
+      <div style={{ fontSize: "x-small", color: "gray" }}>
         <div>
           <b>홈 화면에 바로가기를 추가해보세요. </b>
         </div>
