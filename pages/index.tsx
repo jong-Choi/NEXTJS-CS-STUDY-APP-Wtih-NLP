@@ -3,7 +3,8 @@ import Head from "next/head";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Button } from "../components/common/atoms/Button";
-import InstallButton from "../components/common/molecules/InstallButton";
+import HomeScreenMessage from "../components/common/molecules/HomeScreenMessage";
+
 import {
   Container,
   Main,
@@ -51,8 +52,6 @@ export default function Home() {
       <Main>
         <Title>다짜고짜</Title>
         <Title>CS문제 풀기</Title>
-        <InstallButton />
-
         {ready ? (
           <>
             <Description>
@@ -76,6 +75,9 @@ export default function Home() {
         ) : (
           <Description>잠시만 기다려 주세요</Description>
         )}
+        <Description>
+          <HomeScreenMessage></HomeScreenMessage>
+        </Description>
       </Main>
     </Container>
   );
