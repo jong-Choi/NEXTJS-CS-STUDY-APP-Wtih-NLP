@@ -1,7 +1,6 @@
 import axios from "axios";
 import Head from "next/head";
 import { useRouter } from "next/navigation";
-import Router from "next/router";
 import { useEffect, useState } from "react";
 import { Button } from "../components/common/atoms/Button";
 import {
@@ -77,7 +76,13 @@ export default function Home() {
         {ready ? (
           <>
             <Description>
-              <Button label="시작하기" onClick={() => Router.push("/quiz")} />
+              <Button
+                label="시작하기"
+                onClick={(e) => {
+                  e.preventDefault();
+                  router.push("/quiz");
+                }}
+              />
             </Description>
             {myQuiz ? (
               <Button
