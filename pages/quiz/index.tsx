@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { Button } from "../../components/common/atoms/Button";
