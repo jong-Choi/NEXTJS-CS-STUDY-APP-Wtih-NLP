@@ -61,8 +61,8 @@ const MyQuiz = () => {
         label={`< 새로운 문제 풀기`}
         size="small"
         onClick={() => router.push("/quiz")}
-        color="teal"
-        backgroundColor="rgba(242, 248, 249, 1)"
+        color="purple"
+        backgroundColor="rgba(246, 245, 254, 1)"
       />
     </StyledNav>
   );
@@ -142,6 +142,7 @@ const MyQuiz = () => {
             label={`전체(${myQuizes.length})`}
             onClick={onClickCategory}
             style={{ margin: "5px" }}
+            color="teal"
           />
           {categoryArray.map((element, idx) => {
             return (
@@ -150,6 +151,7 @@ const MyQuiz = () => {
                 value={element}
                 label={`${element}(${filteredArray[idx]?.length})`}
                 onClick={onClickCategory}
+                color="teal"
                 style={{ margin: "5px" }}
               />
             );

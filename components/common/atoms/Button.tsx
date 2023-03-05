@@ -6,7 +6,7 @@ export interface ButtonProps {
     | "primary"
     | "secondary"
     | "orange"
-    | "pupple"
+    | "purple"
     | "teal"
     | "red"
     | "green"
@@ -74,7 +74,7 @@ export const StyledButton = styled.span`
     background-color: rgba(255, 148, 46, 0.05);
     box-shadow: rgba(255, 148, 46, 1) 0px 0px 0px 1px inset;
   }
-  .storybook-button--pupple {
+  .storybook-button--purple {
     color: rgba(79, 63, 240, 1);
     background-color: rgba(79, 63, 240, 0.05);
     box-shadow: rgba(79, 63, 240, 1) 0px 0px 0px 1px inset;
