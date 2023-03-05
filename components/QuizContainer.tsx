@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Quiz } from "../pages/api/quiz";
+import { Button, ButtonProps } from "./common/atom/Button";
 
 const QuizContainer = ({
   quiz,
@@ -14,6 +15,12 @@ const QuizContainer = ({
   const [answersKeyword, setAnswersKeyword] = useState([] as string[]);
   const [allAnswersKeyword, setAllAnswersKeyword] = useState([] as string[]);
   const [isCorrect, setIsCorrect] = useState([] as boolean[]);
+  const [keywordStyleArray, setKeywordStyleArray] = useState(
+    [] as Array<ButtonProps>
+  );
+  // const [keywordStyleArraySnapshot, setKeywordStyleArraySnapshot] = useState(
+  //   [] as Array<ButtonProps>
+  // );
 
   useEffect(() => {
     const randomIndexes = [];
@@ -80,7 +87,17 @@ const QuizContainer = ({
       const keyword = keywords[idx];
       if (!allAnswersKeyword.includes(keyword)) allAnswersKeyword.push(keyword);
     }
-    setAllAnswersKeyword(allAnswersKeyword.sort(() => Math.random() - 0.5));
+    const sortedAllKeywords = allAnswersKeyword.sort(() => Math.random() - 0.5);
+    const sortedAllKeywordStyle = sortedAllKeywords.map(
+      (element, index) =>
+        ({
+          label: element,
+          color: "blue",
+          disabled: false,
+        } as ButtonProps)
+    );
+    setAllAnswersKeyword(sortedAllKeywords);
+    setKeywordStyleArray(sortedAllKeywordStyle);
   }, [quiz]);
 
   const [answerIndex, setAnswerIndex] = useState(0);
@@ -98,40 +115,59 @@ const QuizContainer = ({
   }, [isCorrect]);
 
   const onClickKeyword = (e) => {
+    const idx = keywordStyleArray.findIndex(
+      (element) => element.label === e.target.value
+    );
+    const newKeywordStyleArray: Array<ButtonProps> = [...keywordStyleArray];
+
     if (e.target.value === answersKeyword[answerIndex]) {
       const newIsCorrect = [...isCorrect];
       newIsCorrect[answerIndex] = true;
       e.target.disabled = true;
       setIsCorrect(newIsCorrect);
+      newKeywordStyleArray[idx].disabled = true;
+      newKeywordStyleArray[idx].color = "green";
+      newKeywordStyleArray.forEach((element) => {
+        if (element.color === "green") return;
+        element.color = "blue";
+        element.disabled = false;
+      });
     } else {
-      alert("틀렸습니당");
+      newKeywordStyleArray[idx].disabled = true;
+      newKeywordStyleArray[idx].color = "red";
     }
+    setKeywordStyleArray(newKeywordStyleArray);
   };
+
   return (
     <div>
       <div style={{ whiteSpace: "pre" }}>
         <span>{slicedTextArray[0]}</span>
         {isCorrect.map((boolean, idx) => {
-          if (boolean) return <span>{slicedTextArray[idx + 1]}</span>;
+          if (boolean)
+            return <span key={"text" + idx}>{slicedTextArray[idx + 1]}</span>;
           else {
             const [left, rest] = replacedTextArray[idx].split("{");
             const [center, right] = rest.split("}");
             return (
-              <>
+              <span key={"text" + idx}>
                 <span>{left}</span>
                 <StyledQuiz>{center}</StyledQuiz>
                 <span>{right}</span>
-              </>
+              </span>
             );
           }
         })}
       </div>
       <div>
-        {allAnswersKeyword.map((keyword) => {
+        {keywordStyleArray.map((props, idx) => {
           return (
-            <button type="button" value={keyword} onClick={onClickKeyword}>
-              {keyword}
-            </button>
+            <Button
+              key={idx}
+              {...props}
+              value={props.label}
+              onClick={onClickKeyword}
+            />
           );
         })}
       </div>
@@ -142,6 +178,12 @@ const QuizContainer = ({
 export default QuizContainer;
 
 export const StyledQuiz = styled.span`
-  color: red;
-  background-color: yellow;
+  font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  color: rgba(64, 103, 249, 1);
+  background-color: rgba(64, 103, 249, 0.05);
+  border-radius: 3em;
+  padding: 0px 16px;
+  /* color: red;
+  background-color: yellow; */
 `;
