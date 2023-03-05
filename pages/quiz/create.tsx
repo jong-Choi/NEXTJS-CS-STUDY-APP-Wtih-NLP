@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 
 const QuizCreate = () => {
@@ -6,8 +7,14 @@ const QuizCreate = () => {
   const [title, setTitle] = useState("");
   const [source, setSource] = useState("");
   const [category, setCategory] = useState("리액트");
+  const [password, setPassword] = useState("");
+  const router = useRouter();
   const onSubmit = async (e) => {
     e.preventDefault();
+    if (password !== process.env.NEXT_PUBLIC_ADMINPASSWORD) {
+      alert("관리자 비밀번호가 일치하지 않습니다.");
+      return router.push("/");
+    }
     try {
       const res = await axios.post("/api/quiz", {
         category,
@@ -48,6 +55,11 @@ const QuizCreate = () => {
           value={source}
           onChange={(e) => setSource(e.target.value)}
           placeholder="출처"
+        />
+        <input
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="관리자 비밀번호"
         />
         <button type="submit" onClick={onSubmit}>
           전송하기

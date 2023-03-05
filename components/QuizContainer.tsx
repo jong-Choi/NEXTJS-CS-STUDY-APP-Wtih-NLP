@@ -9,9 +9,13 @@ import { StyledQuizContainer } from "./common/organisms/QuizContainerWrapper";
 const QuizContainer = ({
   quiz,
   keywords,
+  onCorrect,
+  nav,
 }: {
   quiz: Quiz;
   keywords: string[];
+  onCorrect: (attempts: number) => void;
+  nav: JSX.Element;
 }) => {
   const [slicedTextArray, setSlicedTextArray] = useState([] as string[]);
   const [replacedTextArray, setReplacedTextArray] = useState([] as string[]);
@@ -44,7 +48,6 @@ const QuizContainer = ({
     const sortedKeyword = randomIndexes.map((index) => {
       return keywordArray[index];
     });
-    console.log(JSON.stringify(sortedKeyword));
 
     let fromIndex = 0;
     const answersKeyword = [];
@@ -81,6 +84,7 @@ const QuizContainer = ({
     });
 
     //배열을 모두 합치면 원하는 문자열이 된다.
+    setAttemps(0);
     setIsCorrect(Array(replacedTextArray.length).fill(false));
     setSlicedTextArray(slicedTextArray);
     setReplacedTextArray(replacedTextArray);
@@ -115,7 +119,7 @@ const QuizContainer = ({
         break;
       }
     }
-    if (allCorrected) setTimeout(() => alert("모두 맞췄습니다!"), 50);
+    if (allCorrected) setTimeout(() => onCorrect(attempts), 50);
   }, [isCorrect]);
 
   const onClickKeyword = (e) => {
@@ -146,7 +150,11 @@ const QuizContainer = ({
 
   return (
     <StyledQuizContainer>
-      <div>시도: {attempts}</div>
+      <StyledTextHeader>
+        {nav}
+        <div>시도: {attempts}</div>
+      </StyledTextHeader>
+
       <TextWrapper>
         <span>{slicedTextArray[0]}</span>
         {isCorrect.map((boolean, idx) => {
@@ -193,4 +201,15 @@ export const StyledQuiz = styled.span`
   padding: 0px 6px;
   /* color: red;
   background-color: yellow; */
+`;
+
+export const StyledTextHeader = styled.div`
+  position: sticky;
+  top: 0;
+  background: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(255, 255, 255, 1) 10%,
+    rgba(255, 255, 255, 1) 100%
+  );
 `;

@@ -42,7 +42,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Main>
-        <Title>다짜고짜 CS문제 푸는 앱</Title>
+        <Title>다짜고짜</Title>
+        <Title>CS문제 풀기</Title>
 
         {ready ? (
           <Description>
