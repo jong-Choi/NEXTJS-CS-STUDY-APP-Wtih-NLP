@@ -3,6 +3,7 @@ import Head from "next/head";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Button } from "../components/common/atoms/Button";
+import InstallButton from "../components/common/molecules/InstallButton";
 import {
   Container,
   Main,
@@ -50,12 +51,14 @@ export default function Home() {
       <Main>
         <Title>다짜고짜</Title>
         <Title>CS문제 풀기</Title>
+        <InstallButton />
 
         {ready ? (
           <>
             <Description>
               <Button label="시작하기" onClick={(e) => router.push("/quiz")} />
             </Description>
+
             {myQuiz ? (
               <Button
                 label="내가 푼 문제 초기화"
