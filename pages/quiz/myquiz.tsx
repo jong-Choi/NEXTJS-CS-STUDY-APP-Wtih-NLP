@@ -68,26 +68,58 @@ const MyQuiz = () => {
         {quizes.map((element) => {
           return (
             <div key={element.id}>
-              <div>
-                <b>카테고리:</b> {element.category}
-              </div>
-              <div>
-                <b>제목:</b> {element.title}
-              </div>
-              <div>
+              <div style={{ paddingLeft: "0.5rem" }}>
+                <div
+                  style={{
+                    fontSize: "small",
+                  }}
+                >
+                  <b>나의 정확도 : </b>
+                  <span
+                    style={{
+                      color: `${element.attempts > 6 ? "orange" : "green"}`,
+                    }}
+                  >
+                    {((5 / ~~element.attempts) * 100).toFixed(0) + "%"}
+                  </span>
+                </div>
+
+                <div
+                  style={{
+                    fontSize: "large",
+                    fontWeight: "700",
+                    marginBottom: "0.5rem",
+                  }}
+                >
+                  {/* <b>제목:</b>  */}
+                  {element.title}
+                  <span
+                    style={{
+                      fontSize: "x-small",
+                      fontWeight: "400",
+                      margin: "0 0.5rem",
+                      color: "gray",
+                    }}
+                  >
+                    {/* <b>카테고리:</b>  */}
+                    {element.category}
+                  </span>
+                </div>
+
+                {/* <div>
                 <b>내용</b>
+              </div> */}
               </div>
               <div style={{ border: "1px solid", padding: "0.5rem" }}>
                 {element.originalText}
-              </div>
-              <div>
-                <b>나의 정확도 :</b>
-                {((5 / ~~element.attempts) * 100).toFixed(0) + "%"}
-              </div>
-              <div>
+                <br />
                 <b>문제 출처 : </b>
-                <a href={element.source}>{element.source}</a>
+                <a href={element.source} style={{ color: "darkblue" }}>
+                  {element.source}
+                </a>
               </div>
+
+              <div></div>
               <hr />
             </div>
           );
