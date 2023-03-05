@@ -66,89 +66,91 @@ const MyQuiz = () => {
     </StyledNav>
   );
   return (
-    <StyledQuizContainer>
-      <TextWrapper>
-        {quizes.map((element) => {
-          return (
-            <div key={element.id}>
-              <div style={{ paddingLeft: "0.5rem" }}>
-                <div
-                  style={{
-                    fontSize: "small",
-                  }}
-                >
-                  <b>나의 정확도 : </b>
-                  <span
+    <div style={{ height: "100vh", width: "100vw" }}>
+      <StyledQuizContainer>
+        <TextWrapper>
+          {quizes.map((element) => {
+            return (
+              <div key={element.id}>
+                <div style={{ paddingLeft: "0.5rem" }}>
+                  <div
                     style={{
-                      color: `${element.attempts > 6 ? "orange" : "green"}`,
+                      fontSize: "small",
                     }}
                   >
-                    {((5 / ~~element.attempts) * 100).toFixed(0) + "%"}
-                  </span>
-                </div>
+                    <b>나의 정확도 : </b>
+                    <span
+                      style={{
+                        color: `${element.attempts > 6 ? "orange" : "green"}`,
+                      }}
+                    >
+                      {((5 / ~~element.attempts) * 100).toFixed(0) + "%"}
+                    </span>
+                  </div>
 
-                <div
-                  style={{
-                    fontSize: "large",
-                    fontWeight: "700",
-                    marginBottom: "0.5rem",
-                  }}
-                >
-                  {/* <b>제목:</b>  */}
-                  {element.title}
-                  <span
+                  <div
                     style={{
-                      fontSize: "x-small",
-                      fontWeight: "400",
-                      margin: "0 0.5rem",
-                      color: "gray",
+                      fontSize: "large",
+                      fontWeight: "700",
+                      marginBottom: "0.5rem",
                     }}
                   >
-                    {/* <b>카테고리:</b>  */}
-                    {element.category}
-                  </span>
-                </div>
+                    {/* <b>제목:</b>  */}
+                    {element.title}
+                    <span
+                      style={{
+                        fontSize: "x-small",
+                        fontWeight: "400",
+                        margin: "0 0.5rem",
+                        color: "gray",
+                      }}
+                    >
+                      {/* <b>카테고리:</b>  */}
+                      {element.category}
+                    </span>
+                  </div>
 
-                {/* <div>
+                  {/* <div>
                 <b>내용</b>
               </div> */}
-              </div>
-              <div style={{ border: "1px solid", padding: "0.5rem" }}>
-                {element.originalText}
-                <br />
-                <b>문제 출처 : </b>
-                <a href={element.source} style={{ color: "darkblue" }}>
-                  {element.source}
-                </a>
-              </div>
+                </div>
+                <div style={{ border: "1px solid", padding: "0.5rem" }}>
+                  {element.originalText}
+                  <br />
+                  <b>문제 출처 : </b>
+                  <a href={element.source} style={{ color: "darkblue" }}>
+                    {element.source}
+                  </a>
+                </div>
 
-              <div></div>
-              <hr />
-            </div>
-          );
-        })}
-      </TextWrapper>
-      <QuizAnswerContainer FAB={FAB}>
-        <Button
-          key="전체"
-          value="전체"
-          label={`전체(${myQuizes.length})`}
-          onClick={onClickCategory}
-          style={{ margin: "5px" }}
-        />
-        {categoryArray.map((element, idx) => {
-          return (
-            <Button
-              key={idx}
-              value={element}
-              label={`${element}(${filteredArray[idx]?.length})`}
-              onClick={onClickCategory}
-              style={{ margin: "5px" }}
-            />
-          );
-        })}
-      </QuizAnswerContainer>
-    </StyledQuizContainer>
+                <div></div>
+                <hr />
+              </div>
+            );
+          })}
+        </TextWrapper>
+        <QuizAnswerContainer FAB={FAB}>
+          <Button
+            key="전체"
+            value="전체"
+            label={`전체(${myQuizes.length})`}
+            onClick={onClickCategory}
+            style={{ margin: "5px" }}
+          />
+          {categoryArray.map((element, idx) => {
+            return (
+              <Button
+                key={idx}
+                value={element}
+                label={`${element}(${filteredArray[idx]?.length})`}
+                onClick={onClickCategory}
+                style={{ margin: "5px" }}
+              />
+            );
+          })}
+        </QuizAnswerContainer>
+      </StyledQuizContainer>
+    </div>
   );
 };
 

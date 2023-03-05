@@ -104,7 +104,7 @@ const QuizPage = () => {
     </StyledNav>
   );
   return (
-    <div>
+    <div style={{ height: "100vh", width: "100vw" }}>
       <QuizContainer
         quiz={quiz}
         keywords={keywords}

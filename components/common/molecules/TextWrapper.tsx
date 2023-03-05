@@ -19,7 +19,7 @@ const StyledTextWrapper = styled.div`
   white-space: pre-wrap;
   line-height: 1.5rem;
   padding: 1rem;
-
+  overflow-y: scroll;
   .bottom-padding {
     width: 100%;
     height: 40vh;
