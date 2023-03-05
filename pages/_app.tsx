@@ -17,10 +17,10 @@ export default function App({ Component, pageProps }: AppProps) {
         <title>CS 문제 풀기</title>
         <meta name="description" content="CS 문제를 자유롭게 풀어봐요" />
         <link rel="icon" href="/favicon.ico" />
-        {/* <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
-          /> */}
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
+        />
         <meta name="application-name" content="CS 퀴즈풀기" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
