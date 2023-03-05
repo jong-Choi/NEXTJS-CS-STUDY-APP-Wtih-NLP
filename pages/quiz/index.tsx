@@ -145,6 +145,7 @@ const StyledNav = styled.nav`
   display: flex;
   justify-content: space-between;
   font-weight: 700;
+
   .attempts-flex {
     display: flex;
   }
