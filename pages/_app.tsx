@@ -17,6 +17,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <title>CS 문제 풀기</title>
         <meta name="description" content="CS 문제를 자유롭게 풀어봐요" />
         <link rel="icon" href="/favicon.ico" />
+        <link rel="manifest" href="/manifest.json" />
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
