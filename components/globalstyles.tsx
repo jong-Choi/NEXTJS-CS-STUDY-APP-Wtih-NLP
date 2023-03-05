@@ -28,7 +28,12 @@ const GlobalStyle = createGlobalStyle`
     -webkit-user-select: none;
     user-select: none;
   }
-
+  html {
+    //https://dev.to/karmasakshi/make-your-pwas-look-handsome-on-ios-1o08
+    min-height: calc(100% + env(safe-area-inset-top));
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+    background-color: white;
+  }
   a {
     color: inherit;
     text-decoration: none;

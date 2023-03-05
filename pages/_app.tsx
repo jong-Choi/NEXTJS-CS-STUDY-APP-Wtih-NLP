@@ -18,13 +18,17 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="description" content="CS 문제를 자유롭게 풀어봐요" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="manifest" href="/manifest.json" />
+
+        <meta name="application-name" content="CS 퀴즈풀기" />
         <meta
           name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
-        />
-        <meta name="application-name" content="CS 퀴즈풀기" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+          content="initial-scale=1, viewport-fit=cover, width=device-width"
+        ></meta>
+        <meta name="apple-mobile-web-app-capable" content="yes"></meta>
+        <meta
+          name="apple-mobile-web-app-status-bar-style"
+          content="black-translucent"
+        ></meta>
         <meta name="apple-mobile-web-app-title" content="CS 퀴즈풀기" />
         <meta name="description" content="CS 문제를 마음대로 풀어보세요" />
         <meta name="format-detection" content="telephone=no" />
