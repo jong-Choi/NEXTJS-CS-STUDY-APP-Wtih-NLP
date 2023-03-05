@@ -21,7 +21,7 @@ const QuizAnswerContainer = ({ ...props }) => {
         className="buttons"
         style={
           activated
-            ? { height: "30vh", opacity: "1" }
+            ? { height: "40vh", opacity: "1" }
             : { height: "0vh", opacity: "0" }
         }
       >
@@ -37,13 +37,14 @@ export const StyledQuizAnswers = styled.div`
   position: fixed;
   bottom: 0;
   width: 100%;
-  max-height: 35%;
+  max-height: 40%;
   text-align: center;
   -webkit-box-shadow: 0 -8px 10px -6px rgba(255, 148, 46, 0.3);
   -moz-box-shadow: 0 -8px 10px -6px rgba(255, 148, 46, 0.3);
   box-shadow: 0 -8px 10px -6px rgba(255, 148, 46, 0.3);
   background: white;
   .buttons {
+    overflow-y: scroll;
     justify-content: space-around;
     transition: all 200ms;
   }

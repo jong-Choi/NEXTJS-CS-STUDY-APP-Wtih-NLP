@@ -34,14 +34,19 @@ const QuizContainer = ({
 
   useEffect(() => {
     const randomIndexes = [];
+    const randomKeywordSet = [];
     if (!quiz) return;
     const { keywordArray, originalText, category, title } = quiz;
-    while (randomIndexes.length < 5) {
+    let flag = 0;
+    while (randomKeywordSet.length < 5 && flag < 100) {
+      flag++;
       // 배열 인덱스 중 무작위 5개의 인덱스를 선택한다.
       const randomIndex = Math.floor(Math.random() * keywordArray.length);
-      if (!randomIndexes.includes(randomIndex)) {
-        randomIndexes.push(randomIndex);
-      }
+      console.log(keywordArray[randomIndex]);
+      console.log(randomKeywordSet.indexOf(keywordArray[randomIndex]));
+      if (randomKeywordSet.indexOf(keywordArray[randomIndex]) >= 0) continue;
+      randomIndexes.push(randomIndex);
+      randomKeywordSet.push(keywordArray[randomIndex]);
     }
 
     // 인덱스들을 오름차순으로 정렬한다.
