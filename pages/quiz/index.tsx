@@ -141,7 +141,7 @@ const QuizPage = () => {
 export default QuizPage;
 
 const StyledNav = styled.nav`
-  background-color: white;
+  /* background-color: white; */
   display: flex;
   justify-content: space-between;
   font-weight: 700;

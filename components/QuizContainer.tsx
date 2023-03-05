@@ -226,14 +226,13 @@ export const StyledTextHeader = styled.div`
   position: sticky;
   top: env(safe-area-inset-top);
   /* min-height: calc(100% + env(safe-area-inset-top)); */
-  /* padding: env(safe-area-inset-top) env(safe-area-inset-right)
-    env(safe-area-inset-bottom) env(safe-area-inset-left); */
-  padding: 0.5rem 1rem 0;
+  padding: 0 1rem;
+  padding-top: calc(0.5rem + env(safe-area-inset-top));
   background: linear-gradient(
     0deg,
     rgba(255, 255, 255, 0.2) 0%,
     rgba(255, 255, 255, 1) 10%,
-    rgba(255, 255, 255, 1) 100%
+    #d5d2fa 100%
   );
   .sub-header {
     display: flex;
