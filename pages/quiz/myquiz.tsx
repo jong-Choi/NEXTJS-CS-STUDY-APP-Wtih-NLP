@@ -5,6 +5,7 @@ import { Button } from "../../components/common/atoms/Button";
 import QuizAnswerContainer from "../../components/common/molecules/QuizAnswerContainer";
 import TextWrapper from "../../components/common/molecules/TextWrapper";
 import { StyledQuizContainer } from "../../components/common/organisms/QuizContainerWrapper";
+import { StyledTextHeader } from "../../components/QuizContainer";
 import { Quiz } from "../api/quiz";
 
 interface MyQuiz extends Quiz {
@@ -68,6 +69,11 @@ const MyQuiz = () => {
   return (
     <div style={{ height: "100vh", width: "100vw" }}>
       <StyledQuizContainer>
+        <StyledTextHeader>
+          <div style={{ textAlign: "center", fontWeight: "700" }}>
+            내가 푼 문제
+          </div>
+        </StyledTextHeader>
         <TextWrapper>
           {quizes.map((element) => {
             return (
