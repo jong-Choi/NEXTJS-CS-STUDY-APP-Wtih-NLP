@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { Button } from "../../components/common/atoms/Button";
 import QuizContainer from "../../components/QuizContainer";
 import { Quiz } from "../api/quiz";
+import MyQuiz from "./myquiz";
 
 const QuizPage = () => {
   const [quizes, setQuizes] = useState([] as Quiz[]);
@@ -22,9 +23,16 @@ const QuizPage = () => {
     newAttemptsArray[index] = attempts;
     setAttemptsArray(newAttemptsArray);
     //내가 푼 문제에 저장합니다.
-    let myQuiz = JSON.parse(localStorage.getItem("myQuiz"));
+    let myQuiz = JSON.parse(
+      localStorage.getItem("myQuiz")
+    ) as Array<MyQuiz> | null;
     if (!myQuiz) myQuiz = [];
-    myQuiz.push({ ...quiz, attempts: attempts });
+    const idx = myQuiz.findIndex((e) => e.id === quiz.id);
+    if (idx >= 0) {
+      myQuiz[idx].attempts = attempts;
+    } else {
+      myQuiz.push({ ...quiz, attempts: attempts });
+    }
     localStorage.setItem("myQuiz", JSON.stringify(myQuiz));
     //새로운 퀴즈를 반환합니다.
     let quizNumber;

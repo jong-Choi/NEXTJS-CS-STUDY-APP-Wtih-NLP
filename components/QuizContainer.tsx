@@ -38,7 +38,7 @@ const QuizContainer = ({
     if (!quiz) return;
     const { keywordArray, originalText, category, title } = quiz;
     let flag = 0;
-    while (randomKeywordSet.length < 5 && flag < 100) {
+    while (randomKeywordSet.length < 5 && flag < 50) {
       flag++;
       // 배열 인덱스 중 무작위 5개의 인덱스를 선택한다.
       const randomIndex = Math.floor(Math.random() * keywordArray.length);
@@ -121,14 +121,20 @@ const QuizContainer = ({
   useEffect(() => {
     if (!isCorrect.length) return;
     let allCorrected = true;
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < isCorrect.length; i++) {
       if (!isCorrect[i]) {
         setAnswerIndex(i);
         allCorrected = false;
         break;
       }
     }
-    if (allCorrected) setTimeout(() => onCorrect(attempts), 50);
+    if (allCorrected) {
+      let crrAttempts = attempts;
+      if (isCorrect.length < 5) {
+        crrAttempts += 5 - isCorrect.length;
+      }
+      setTimeout(() => onCorrect(crrAttempts), 50);
+    }
   }, [isCorrect]);
 
   const onClickKeyword = (e) => {
@@ -170,6 +176,7 @@ const QuizContainer = ({
       <TextWrapper>
         <span>{slicedTextArray[0]}</span>
         {isCorrect.map((boolean, idx) => {
+          if (!replacedTextArray) return <></>;
           if (boolean)
             return <span key={"text" + idx}>{slicedTextArray[idx + 1]}</span>;
           else {
