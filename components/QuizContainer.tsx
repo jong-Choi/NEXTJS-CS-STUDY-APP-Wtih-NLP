@@ -21,6 +21,7 @@ const QuizContainer = ({
   const [keywordStyleArray, setKeywordStyleArray] = useState(
     [] as Array<ButtonProps>
   );
+  const [attempts, setAttemps] = useState(0);
   // const [keywordStyleArraySnapshot, setKeywordStyleArraySnapshot] = useState(
   //   [] as Array<ButtonProps>
   // );
@@ -140,10 +141,12 @@ const QuizContainer = ({
       newKeywordStyleArray[idx].color = "red";
     }
     setKeywordStyleArray(newKeywordStyleArray);
+    setAttemps(attempts + 1);
   };
 
   return (
     <StyledQuizContainer>
+      <div>시도: {attempts}</div>
       <TextWrapper>
         <span>{slicedTextArray[0]}</span>
         {isCorrect.map((boolean, idx) => {

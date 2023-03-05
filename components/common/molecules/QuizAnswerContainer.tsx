@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Button } from "../atoms/Button";
 
 const QuizAnswerContainer = ({ ...props }) => {
-  const [activated, setActivated] = useState(false);
+  const [activated, setActivated] = useState(true);
   return (
     <StyledQuizAnswers>
       <div className="actionButton">

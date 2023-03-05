@@ -1,14 +1,39 @@
-import Head from 'next/head'
+import axios from "axios";
+import Head from "next/head";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { Button } from "../components/common/atoms/Button";
 import {
   Container,
   Main,
   Title,
   Description,
-  CodeTag,
-} from '../components/sharedstyles'
-import Cards from '../components/cards'
+} from "../components/sharedstyles";
+import { Quiz } from "./api/quiz";
 
 export default function Home() {
+  const fetchData = async () => {
+    try {
+      const res = await axios.get("/api/quiz");
+      if (res.status === 200) {
+        const quizes = res.data.result.quizes as Quiz[];
+        const keywords = res.data.result.keywords as string[];
+        return { quizes, keywords };
+      }
+    } catch (e) {
+      alert(e.message);
+    }
+  };
+  const router = useRouter();
+  const [ready, setReady] = useState(false);
+  useEffect(() => {
+    fetchData().then((res) => {
+      const { quizes, keywords } = res;
+      localStorage.setItem("quizes", JSON.stringify(quizes));
+      localStorage.setItem("keywords", JSON.stringify(keywords));
+      setReady(true);
+    });
+  }, []);
   return (
     <Container>
       <Head>
@@ -17,17 +42,16 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Main>
-        <Title>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </Title>
+        <Title>다짜고짜 CS문제 푸는 앱</Title>
 
-        <Description>
-          Get started by editing
-          <CodeTag>pages/index.tsx</CodeTag>
-        </Description>
-
-        <Cards />
+        {ready ? (
+          <Description>
+            <Button label="시작하기" onClick={() => router.push("/quiz")} />
+          </Description>
+        ) : (
+          <Description>잠시만 기다려 주세요</Description>
+        )}
       </Main>
     </Container>
-  )
+  );
 }
