@@ -224,10 +224,10 @@ export const StyledQuiz = styled.span`
 
 export const StyledTextHeader = styled.div`
   position: sticky;
-  top: 0;
+  top: env(safe-area-inset-top);
   /* min-height: calc(100% + env(safe-area-inset-top)); */
-  padding: env(safe-area-inset-top) env(safe-area-inset-right)
-    env(safe-area-inset-bottom) env(safe-area-inset-left);
+  /* padding: env(safe-area-inset-top) env(safe-area-inset-right)
+    env(safe-area-inset-bottom) env(safe-area-inset-left); */
   padding: 0.5rem 1rem 0;
   background: linear-gradient(
     0deg,
