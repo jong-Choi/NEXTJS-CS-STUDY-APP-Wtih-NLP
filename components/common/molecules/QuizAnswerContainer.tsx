@@ -13,9 +13,9 @@ const QuizAnswerContainer = ({ FAB = <></>, ...props }) => {
             setActivated(!activated);
           }}
           label={activated ? "숨기기" : "+"}
-          size="small"
-          color="orange"
-          backgroundColor="white"
+          // size=""
+          color="primary"
+          // backgroundColor="white"
         ></Button>
       </div>
       <div
@@ -23,7 +23,7 @@ const QuizAnswerContainer = ({ FAB = <></>, ...props }) => {
         style={
           activated
             ? { height: "40vh", opacity: "1" }
-            : { height: "0vh", opacity: "0" }
+            : { height: "3vh", opacity: "0" }
         }
       >
         {props.children}
@@ -40,9 +40,9 @@ export const StyledQuizAnswers = styled.div`
   width: 100%;
   max-height: 40%;
   text-align: center;
-  -webkit-box-shadow: 0 -8px 10px -6px rgba(255, 148, 46, 0.3);
-  -moz-box-shadow: 0 -8px 10px -6px rgba(255, 148, 46, 0.3);
-  box-shadow: 0 -8px 10px -6px rgba(255, 148, 46, 0.3);
+  -webkit-box-shadow: 0 -8px 10px -6px rgba(30, 167, 253, 0.3);
+  -moz-box-shadow: 0 -8px 10px -6px rgba(30, 167, 253, 0.3);
+  box-shadow: 0 -8px 10px -6px rgba(30, 167, 253, 0.3);
   background: white;
   .buttons {
     justify-content: space-around;
