@@ -28,13 +28,13 @@ export default function Home() {
   const [ready, setReady] = useState(false);
   const [myQuiz, setMyQuiz] = useState(null);
   useEffect(() => {
-    if (
-      JSON.parse(localStorage.getItem("quizes")).length &&
-      JSON.parse(localStorage.getItem("keywords"))
-    ) {
-      setMyQuiz(JSON.parse(localStorage.getItem("myQuiz")));
-      return setReady(true);
-    }
+    // if (
+    //   JSON.parse(localStorage.getItem("quizes")).length &&
+    //   JSON.parse(localStorage.getItem("keywords"))
+    // ) {
+    //   setMyQuiz(JSON.parse(localStorage.getItem("myQuiz")));
+    //   return setReady(true);
+    // }
     fetchData().then((res) => {
       const { quizes, keywords } = res;
       localStorage.setItem("quizes", JSON.stringify(quizes));
