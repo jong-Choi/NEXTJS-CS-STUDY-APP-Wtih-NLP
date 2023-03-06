@@ -56,7 +56,7 @@ const MyQuiz = () => {
   };
 
   const FAB = (
-    <StyledNav>
+    <StyledFAB>
       <Button
         label={`< 새로운 문제 풀기`}
         size="small"
@@ -64,7 +64,7 @@ const MyQuiz = () => {
         color="purple"
         backgroundColor="rgba(246, 245, 254, 1)"
       />
-    </StyledNav>
+    </StyledFAB>
   );
   return (
     <div style={{ height: "100vh", width: "100vw" }}>
@@ -164,7 +164,7 @@ const MyQuiz = () => {
 
 export default MyQuiz;
 
-export const StyledNav = styled.div`
+export const StyledFAB = styled.div`
   /* position: fixed;
   top: 0px;
   right: 0px; */

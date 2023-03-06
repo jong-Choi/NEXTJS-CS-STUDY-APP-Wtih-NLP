@@ -22,7 +22,7 @@ const QuizContainer = ({
   const [slicedTextArray, setSlicedTextArray] = useState([] as string[]);
   const [replacedTextArray, setReplacedTextArray] = useState([] as string[]);
   const [answersKeyword, setAnswersKeyword] = useState([] as string[]);
-  const [allAnswersKeyword, setAllAnswersKeyword] = useState([] as string[]);
+  // const [allAnswersKeyword, setAllAnswersKeyword] = useState([] as string[]);
   const [isCorrect, setIsCorrect] = useState([] as boolean[]);
   const [keywordStyleArray, setKeywordStyleArray] = useState(
     [] as Array<ButtonProps>
@@ -113,7 +113,7 @@ const QuizContainer = ({
           disabled: false,
         } as ButtonProps)
     );
-    setAllAnswersKeyword(sortedAllKeywords);
+    // setAllAnswersKeyword(sortedAllKeywords);
     setKeywordStyleArray(sortedAllKeywordStyle);
   }, [quiz]);
 
